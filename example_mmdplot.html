@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="d3.min.js" charset="utf-8"></script>
+    <script src="mmdplot.js" charset="utf-8"></script>
+    <style>
+#dg {
+  background-color: #fff;
+  font-size: 0.5px;
+}
+#dg .nodes {
+  stroke: #000;
+  stroke-width: 0.5;
+}
+#dg polygon {
+  stroke: #555;
+  stroke-width: 0.05;
+}
+#dg .line {
+  fill: none;
+  stroke: #555;
+  stroke-width: 0.1;
+}
+    </style>
+  </head>
+  <body>
+    <svg id="dg"></svg>
+
+    <script type="text/javascript">
+// options, see the opts structure below for details
+var height = 1000;
+var width = 1000;
+
+var opts = { height: height,
+             width: width,
+             edge_min_val: 0.0,
+             edge_max_val: 1.0,
+             edge_offset: 4
+           };
+
+// load data and draw
+d3.json("data.json", function(error, json) {
+  if (error) return console.warn(error);
+  draw_mmdplot("#dg", json, opts);
+});
+    </script>
+  </body>
+</html>
